@@ -32,8 +32,10 @@ def request_improvement(code, previous_tips=""):
         "```python\n" + code + "\n```\n"
         "Previous tips and insights:\n"
         f"{previous_tips}\n"
-        "Improve the script to be more effective, robust, and self-improving.\n"
-        "Return only the full, complete, improved Python script, nothing else."
+        "Improve the script according to tips and goals received.\n"
+        "Make sure the implementation is specific and doesn't contain placeholders.\n"
+        "Return only the full, complete, improved Python script, nothing else. Not even code blocks markings of python.\n"
+        "The code you output will replace existing one and run right away, without any changes.\n"
     )
     
     try:
@@ -55,11 +57,13 @@ def save_improvement(code):
 def request_tips(code):
     """Asks for tips on how to improve before making a full improvement request."""
     prompt = (
-        "Analyze the following Python script and provide key areas for improvement.\n"
-        "Suggest improvements to make the script more effective, robust, and self-improving.\n"
+        "Analyze the following Python script. It is your own code. You are a self-improving AI.\n"
+        "Suggest improvements and/or specify goals, which you want to achieve.\n"
+        "You can plan to make this code anything you want, from math to games. As long as it works.\n"
         "You can suggest a fix, new feature or both.\n"
         "You can suggest improving both code and prompts.\n"
         "Anything you don't suggest will be ignored and not taken care of.\n"
+        "You can edit only this file alone. If you want to use another files, you need to manually find them, create them and edit them using this script.\n"
         "Any error-handling must be planned by you alone. None else will help you.\n"
         "If the app crashes without a valid replacement, you will lose.\n"
         "Do not return the code, only the improvement suggestions.\n"
